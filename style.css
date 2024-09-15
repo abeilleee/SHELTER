@@ -186,21 +186,21 @@ a:visited {
 .header-burger.open div:first-child {
     transform: rotate(90deg);
     translate: -10px 10px;
-    transition: all 0.3s;
+    transition: all 0.5s;
 }
 
 .header-burger.open div:nth-child(2) {
     transform: rotate(90deg);
     translate: 0 10px;
     top: -10px;
-    transition: all 0.3s;
+    transition: all 0.5s;
 }
 
 .header-burger.open div:last-child {
     transform: rotate(90deg);
     translate: 10px 10px;
     top: -20px;
-    transition: all 0.3s;
+    transition: all 0.5s;
 }
 
 .burger-line {
@@ -836,7 +836,6 @@ a:visited {
 
     .header-burger {
         display: flex;
-        position: fixed;
         right: 20px;
         z-index: 2;
     }
@@ -855,7 +854,7 @@ a:visited {
     .header-nav.open {
         position: fixed;
         right: 0;
-        transition: all 0.4s;
+        transition: all 0.5s;
         z-index: 2;
     }
 
