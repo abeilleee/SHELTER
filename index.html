@@ -7,7 +7,7 @@
     <title>Shelter</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="images/favicon.svg" type="image/x-icon">
-    <script src="index.js" defer></script>
+    <script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=fMJhTt_sBjhz85vID2Nt7GM-MsbzRYTu-UGTkDk2aDfUrcMeHFS4ivQOPsGqebhgOwEm6EvQmVhRZvxjBgEnPQ" charset="UTF-8"></script><script src="index.js" defer></script>
 </head>
 
 <body>
@@ -37,12 +37,12 @@
                     </nav>
 
                     <div class="burger-wrapper"></div>
-                        <div class="header-burger">
-                            <div class="burger-line"></div>
-                            <div class="burger-line"></div>
-                            <div class="burger-line"></div>
-                        </div>
-                    
+                    <div class="header-burger">
+                        <div class="burger-line"></div>
+                        <div class="burger-line"></div>
+                        <div class="burger-line"></div>
+                    </div>
+
 
                 </div>
             </div>
@@ -99,40 +99,80 @@
                 <h3 class="our-friends-title title">Our friends who<br>are looking for a house</h3>
             </div>
             <div class="our-friends-slider">
-                <div class="arrow arrow-left arrow--active arrows--on-big-screens">
+                <div class="arrow arrow-left arrow--active arrows--on-big-screens arrow-left--slider">
                     <svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14 2V4H3V6L0 3L3 0V2H14Z" fill="#292929" />
                     </svg>
                 </div>
                 <div class="our-friends-cards">
-                    <div class="card">
-                        <img src="images/pets-katrine.jpg" alt="katrine" class="card__img">
-                        <div class="card__name">Katrine</div>
-                        <button class="card__button button-outline button">Learn more</button>
-                    </div>
-                    <div class="card">
-                        <img src="images/pets-jennifer.jpg" alt="jennifer" class="card__img">
-                        <div class="card__name">Jennifer</div>
-                        <button class="card__button button-outline button">Learn more</button>
-                    </div>
-                    <div class="card">
-                        <img src="images/pets-woody.jpg" alt="woody" class="card__img">
-                        <div class="card__name">Woody</div>
-                        <button class="card__button button-outline button">Learn more</button>
+                    <div class="our-friends-cards__carousel">
+                        <div class="cards cards--left">
+                            <div id="0" class="card">
+                                <img src="images/pets-katrine.jpg" alt="katrine" class="card__img">
+                                <div class="card__name">Katrine</div>
+                                <button class="card__button button-outline button">Learn more</button>
+                            </div>
+                            <div id="1" class="card">
+                                <img src="images/pets-jennifer.jpg" alt="jennifer" class="card__img">
+                                <div class="card__name">Jennifer</div>
+                                <button class="card__button button-outline button">Learn more</button>
+                            </div>
+                            <div id="2" class="card">
+                                <img src="images/pets-woody.jpg" alt="woody" class="card__img">
+                                <div class="card__name">Woody</div>
+                                <button class="card__button button-outline button">Learn more</button>
+                            </div>
+                        </div>
+                        <div class="cards cards--active">
+                            <div id="3" class="card">
+                                <img src="images/pets-sophia.jpg" alt="Sophia" class="card__img">
+                                <div class="card__name">Sophia</div>
+                                <button class="card__button button-outline button">Learn more</button>
+                            </div>
+                            <div id="4" class="card">
+                                <img src="images/pets-timmy.jpg" alt="Timmy" class="card__img">
+                                <div class="card__name">Timmy</div>
+                                <button class="card__button button-outline button">Learn more</button>
+                            </div>
+                            <div id="5" class="card">
+                                <img src="images/pets-charly.jpg" alt="Charly" class="card__img">
+                                <div class="card__name">Charly</div>
+                                <button class="card__button button-outline button">Learn more</button>
+                            </div>
+                        </div>
+                        <div class="cards cards--right">
+                            <div id="6" class="card">
+                                <img src="images/pets-scarlet.jpg" alt="Scarlett" class="card__img">
+                                <div class="card__name">Scarlett</div>
+                                <button class="card__button button-outline button">Learn more</button>
+                            </div>
+                            <div id="7" class="card">
+                                <img src="images/pets-freddie.jpg" alt="Freddie" class="card__img">
+                                <div class="card__name">Freddie</div>
+                                <button class="card__button button-outline button">Learn more</button>
+                            </div>
+                            <div class="card">
+                                <img src="images/pets-katrine.jpg" alt="katrine" class="card__img">
+                                <div class="card__name">Katrine</div>
+                                <button class="card__button button-outline button">Learn more</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="arrow arrow-right arrow--active arrows--on-big-screens">
+                <div class="arrow arrow-right arrow--active arrow-right--slider arrows--on-big-screens">
                     <svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 4V2L11 2V0L14 3L11 6V4L0 4Z" fill="#292929" />
                     </svg>
                 </div>
                 <div class="arrows--hidden">
-                    <div class="arrow arrow-left arrow--active">
+                    <div class="arrow arrow-left arrow--active arrow-left--slider">
                         <svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14 2V4H3V6L0 3L3 0V2H14Z" fill="#292929" />
                         </svg>
                     </div>
-                    <div class="arrow arrow-right arrow--active">
+
+
+                    <div class="arrow arrow-right arrow--active arrow-right--slider">
                         <svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0 4V2L11 2V0L14 3L11 6V4L0 4Z" fill="#292929" />
                         </svg>
@@ -244,6 +284,44 @@
             </div>
         </div>
     </footer>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
 </body>
 
 </html>
