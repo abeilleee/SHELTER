@@ -1,21 +1,70 @@
+@font-face {
+    font-family: "Arial";
+    font-style: normal;
+    font-weight: 400;
+    src: url("fonts/arial/arial-regular.ttf");
+}
+
+@font-face {
+    font-family: "Arial";
+    font-style: bold;
+    font-weight: 700;
+    src: url('fonts/arial/arial-bold.ttf');
+}
+
+@font-face {
+    font-family: "Arial";
+    font-style: italic;
+    font-weight: 400;
+    src: url("fonts/arial/arial-italic.ttf");
+}
+
+@font-face {
+    font-family: "Georgia";    
+    font-style: normal;
+    font-weight: 400;
+    src: url("fonts/georgia/georgia-regular.ttf");
+}
+
+@font-face {
+    font-family: "Georgia";
+    font-style: bold;
+    font-weight: 800;
+    src: url("fonts/georgia/georgia-bold.ttf");
+}
+
+
 @keyframes move-left {
-    from {right: -990px;}
-    to {left: -0px;}
+    from {
+        /* right: -990px; */
+        right: -100%;
+    }
+
+    to {
+        left: -0px;
+    }
 }
 
 .transition-left {
     animation-name: move-left;
-    animation-duration: 1.5s;
+    animation-duration: 0.8s;
 }
 
 @keyframes move-right {
-    from {left: -990px;}
-    to {left: -1980px;}
+    from {
+        /* left: -990px; */
+        left: -100%;
+    }
+
+    to {
+        /* left: -1980px; */
+        left: -200%;
+    }
 }
 
 .transition-right {
     animation-name: move-right;
-    animation-duration: 1.5s;
+    animation-duration: 0.8s;
 }
 
 
@@ -365,21 +414,31 @@ a:visited {
     align-items: center;
 }
 
-.our-friends-cards {
-    display: flex;
-    width: 990px;
+.our-friends-slider--big {
     overflow: hidden;
 }
 
-.our-friends-cards__carousel{
+.our-friends-cards {
+    display: flex;
+    overflow: hidden;
+}
+
+.our-friends-cards-carousel {
+    width: 990px;
+}
+
+.our-friends-cards__carousel {
     display: flex;
     position: relative;
-    left: -990px;
+    /* left: -990px; */
+    left: -100%;
 }
 
 .our-friends-cards--our-friends {
-    padding: 15px 0px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    align-items: center;
     column-gap: 40px;
     row-gap: 30px;
     margin-bottom: 45px;
@@ -615,27 +674,40 @@ a:visited {
     .our-friends-slider {
         gap: 12px;
     }
+
+    .our-friends-cards--our-friends {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr 1fr;
+    }
+
 }
 
 @media (max-width: 1200px) {
-    .our-friends-cards {
+    .about-box {
+        padding: 0 90px;
+        gap: 70px;
+    }
+
+    .our-friends-cards-carousel {
         height: 435px;
         gap: 40px;
-        flex-wrap: wrap;
         overflow: hidden;
-        max-width: 600px;
+        max-width: 630px;
+    }
+
+    .cards>:nth-child(3) {
+        display: none;
     }
 
     .our-friends-slider {
         gap: 53px;
     }
 
-
     .help-box {
-        padding-left: 39px;
-        padding-right: 39px;
         row-gap: 55px;
-        column-gap: 60px;
+        column-gap: 30px;
+        padding-left: 0px;
+        padding-right: 0;
     }
 
     .help-box__item {
@@ -678,10 +750,6 @@ a:visited {
         display: none;
     }
 
-    .about-box {
-        padding: 0 90px;
-    }
-
     .about-description-one,
     .about-description-second {
         font-size: 12px;
@@ -692,8 +760,11 @@ a:visited {
     }
 
     .our-friends-cards--our-friends {
-        max-width: 100%;
-        height: 100%;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 40px;
+        padding: 0 64px;
+        max-height: 1365px;
+        overflow: hidden;
     }
 
     .footer p {
@@ -805,8 +876,8 @@ a:visited {
         gap: 45px;
     }
 
-    .our-friends-cards {
-        width: 285px;
+    .our-friends-cards-carousel {
+        width: 310px;
     }
 
     .arrows--on-big-screens {
@@ -820,11 +891,6 @@ a:visited {
 
     .our-friends-cards {
         gap: 40px;
-    }
-
-    .our-friends-cards--our-friends {
-        max-width: 100%;
-        height: 100%;
     }
 
     .button-box--our-friends {
@@ -874,11 +940,6 @@ a:visited {
     .help-box__item {
         width: 170px;
         height: 113px;
-    }
-
-    .our-friends-cards--our-friends {
-        max-width: 100%;
-        height: 100%;
     }
 
     .card--none768 {
@@ -941,24 +1002,11 @@ a:visited {
         color: #FAFAFA;
     }
 
-
-    /* .our-friends-slider {
-        flex-direction: column;
-        gap: 45px;
+    .our-friends-cards--our-friends {
+        grid-template-columns: 1fr;
+        row-gap: 30px;
+        padding: 0 15px;
     }
-
-    .our-friends-cards {
-        width: 285px;
-    }
-
-    .arrows--on-big-screens {
-        display: none;
-    }
-
-    .arrows--hidden {
-        display: flex;
-        gap: 80px;
-    } */
 
     .not-only-image {
         margin-left: 0;
@@ -967,6 +1015,14 @@ a:visited {
     .not-only-image img {
         max-width: 393px;
         max-height: 395px;
+    }
+}
+
+@media (max-width: 700px) {
+    .about-box {
+        margin: 42px 0;
+        padding: 0 15px;
+        gap: 42px;
     }
 }
 
@@ -1021,12 +1077,6 @@ a:visited {
         max-height: 271px;
     }
 
-    .about-box {
-        margin: 42px 0;
-        padding: 0 15px;
-        gap: 42px;
-    }
-
     .about-box__text p {
         text-align: justify;
     }
@@ -1059,27 +1109,6 @@ a:visited {
 
     .title-wrapper {
         padding-bottom: 42px;
-    }
-
-    .help-box {
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-bottom: 42px;
-        row-gap: 30px;
-        column-gap: 30px;
-    }
-
-    .help-box__item {
-        width: 130px;
-        height: 87px;
-        gap: 20px;
-        text-align: center;
-        margin-right: auto;
-    }
-
-    .help-box__item img {
-        width: 50px;
-        height: 50px;
     }
 
     .item-text {
@@ -1150,4 +1179,27 @@ a:visited {
         max-height: 269px;
     }
 
+}
+
+@media (max-width: 460px) {
+    .help-box {
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-bottom: 42px;
+        row-gap: 30px;
+        column-gap: 30px;
+    }
+
+    .help-box__item {
+        width: 130px;
+        height: 87px;
+        gap: 20px;
+        text-align: center;
+        margin-right: auto;
+    }
+
+    .help-box__item img {
+        width: 50px;
+        height: 50px;
+    }
 }

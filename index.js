@@ -10,9 +10,6 @@ const CAROUSEL = document.querySelector('.our-friends-cards__carousel');
 const CARDS_LEFT = document.querySelector('.cards--left');
 const CARDS_RIGHT = document.querySelector('.cards--right');
 const CARDS_ACTIVE = document.querySelector('.cards--active');
-const CARDS_ACTIVE_CHILDREN = CARDS_ACTIVE.children;
-
-
 
 
 const cardsArray = [
@@ -67,7 +64,6 @@ const cardsArray = [
 ]
 
 
-
 // Интерактив для бургера
 const togglerOpen = (element) => {
     element.classList.toggle('open');
@@ -82,11 +78,10 @@ btnBurger.addEventListener('click', (event) => {
     togglerOpen(headerNav);
     togglerOpen(burgerWrapper);
     document.body.classList.toggle('hidden');
-}
-)
+});
+
 
 headerNavList.addEventListener('click', (event) => {
-    console.log(event.target);
     if (event.target.classList.contains('header-nav__list') || (event.target.classList.contains('list-link'))) {
         togglerRemove(btnBurger);
         togglerRemove(headerNav);
@@ -123,6 +118,74 @@ const createCardTemplate = () => {
     return card1;
 }
 
+const generateRandomNumber = () => {
+    return String(Math.floor(Math.random() * 8));
+}
+
+const generateRandomNumbers = () => {
+    const arr = [];
+    while (arr.length < 8) {
+        let indexRandom = Math.floor(Math.random() * 8);
+        if (!arr.includes(indexRandom)) {
+            arr.push(indexRandom);
+        }
+    }
+    return arr;
+}
+
+
+const generateRandomSetCards = (cardsActive, cardsRight, cardsLeft) => {
+    cardsActive.innerHTML = '';
+    cardsRight.innerHTML = '';
+    cardsLeft.innerHTML = '';
+
+    let newIndexes = generateRandomNumbers();
+    let newIndexesLeft = [];
+    let newIndexesActive = [];
+    let newIndexesRight = [];
+
+    
+    newIndexesLeft = newIndexes.slice(0, 3);
+    newIndexesActive = newIndexes.slice(3, 6);
+    newIndexesRight = newIndexes.slice(6, 8);
+    newIndexesRight.push(newIndexes[0]);
+    
+
+    for (i of newIndexesLeft) {
+        let cardNew = createCardTemplate();
+        cardNew.setAttribute('id', i);
+        cardNew.innerHTML = `<img src="${cardsArray[i].img}" alt="${cardsArray[i].name}" class="card__img">
+    <div class="card__name">${cardsArray[i].name}</div>
+    <button class="card__button button-outline button">${cardsArray[i].btn}</button>`;
+        cardsLeft.appendChild(cardNew);
+    }
+
+    for (i of newIndexesActive) {
+        let cardNew = createCardTemplate();
+        cardNew.setAttribute('id', i);
+        cardNew.innerHTML = `<img src="${cardsArray[i].img}" alt="${cardsArray[i].name}" class="card__img">
+    <div class="card__name">${cardsArray[i].name}</div>
+    <button class="card__button button-outline button">${cardsArray[i].btn}</button>`;
+        cardsActive.appendChild(cardNew);
+    }
+
+    for (i of newIndexesRight) {
+        let cardNew = createCardTemplate();
+        cardNew.setAttribute('id', i);
+        cardNew.innerHTML = `<img src="${cardsArray[i].img}" alt="${cardsArray[i].name}" class="card__img">
+    <div class="card__name">${cardsArray[i].name}</div>
+    <button class="card__button button-outline button">${cardsArray[i].btn}</button>`;
+        cardsRight.appendChild(cardNew);
+    }
+}
+
+
+window.onload = () => {
+    if (cardsArray) {
+        generateRandomSetCards(CARDS_ACTIVE, CARDS_RIGHT, CARDS_LEFT);
+    }
+}
+
 BTN_LEFT_CAROUSEL.addEventListener('click', (moveLeft));
 BTN_RIGHT_CAROUSEL.addEventListener('click', (moveRight));
 
@@ -132,31 +195,26 @@ CAROUSEL.addEventListener('animationend', (animationEvent) => {
 
     if (animationEvent.animationName === 'move-left') {
         CAROUSEL.classList.remove('transition-left');
+        CARDS_RIGHT.innerHTML = CARDS_ACTIVE.innerHTML;
         changedItem = CARDS_LEFT;
-        document.querySelector('.cards--active').innerHTML = CARDS_LEFT.innerHTML;
+        CARDS_ACTIVE.innerHTML = CARDS_LEFT.innerHTML;
 
     } else if (animationEvent.animationName === 'move-right') {
         CAROUSEL.classList.remove('transition-right');
+        CARDS_LEFT.innerHTML = CARDS_ACTIVE.innerHTML;
         changedItem = CARDS_RIGHT;
         CAROUSEL.classList.remove('transition-left');
-        document.querySelector('.cards--active').innerHTML = CARDS_RIGHT.innerHTML;
+        CARDS_ACTIVE.innerHTML = CARDS_RIGHT.innerHTML;
     }
 
     changedItem.innerHTML = '';
 
-    // for (let i = 0; i < 3; i++) {
-    //     const cardNew = createCardTemplate();
-    //     cardNew.innerText = Math.floor(Math.random() * 8);
-    //     changedItem.appendChild(cardNew);
-    // }
-
-    let activeIndexes = Array.from(CARDS_ACTIVE_CHILDREN).map((item) => item.getAttribute('id'));
+    let activeIndexes = Array.from(CARDS_ACTIVE.children).map((item) => item.getAttribute('id'));
     let newIndexes = [];
 
-    while (newIndexes.length < 3) {
-        const cardNew = createCardTemplate();
-        const indexRandom = String(Math.floor(Math.random() * 8));
 
+    while (newIndexes.length < 3) {
+        const indexRandom = String(Math.floor(Math.random() * 8));
         if (!activeIndexes.includes(indexRandom) && (!newIndexes.includes(indexRandom))) {
             newIndexes.push(indexRandom);
         }
@@ -169,12 +227,13 @@ CAROUSEL.addEventListener('animationend', (animationEvent) => {
         <div class="card__name">${cardsArray[+i].name}</div>
         <button class="card__button button-outline button">${cardsArray[i].btn}</button>`;
         changedItem.appendChild(cardNew);
-        console.log(cardNew);
     }
 
     BTN_LEFT_CAROUSEL.addEventListener('click', (moveLeft));
     BTN_RIGHT_CAROUSEL.addEventListener('click', (moveRight));
-})
+});
+
+
 
 
 
