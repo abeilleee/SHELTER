@@ -20,7 +20,7 @@
 }
 
 @font-face {
-    font-family: "Georgia";    
+    font-family: "Georgia";
     font-style: normal;
     font-weight: 400;
     src: url("fonts/georgia/georgia-regular.ttf");
@@ -874,26 +874,39 @@ a:visited {
     .our-friends-slider {
         flex-direction: column;
         gap: 45px;
+        position: relative;
+        margin-bottom: 0px;
     }
 
     .our-friends-cards-carousel {
         width: 310px;
     }
 
-    .arrows--on-big-screens {
+    .card {
+        margin: 0 20px;
+        order: 0;
+    }
+
+    .cards>:nth-child(2) {
         display: none;
     }
 
-    .arrows--hidden {
-        display: flex;
-        gap: 80px;
+    .arrow-left--slider {
+        position: absolute;
+        z-index: 2;
+        top: 105%;
+        transform: translateX(-60px);
     }
 
-    .our-friends-cards {
-        gap: 40px;
+    .arrow-right--slider {
+        position: absolute;
+        z-index: 2;
+        top: 105%;
+        transform: translateX(60px);
     }
 
     .button-box--our-friends {
+        margin-top: 114px;
         padding-bottom: 100px;
     }
 
