@@ -12,6 +12,7 @@ const CARDS_RIGHT = document.querySelector('.cards--right');
 const CARDS_ACTIVE = document.querySelector('.cards--active');
 
 
+
 const cardsArray = [
     {
         id: 0,
@@ -143,13 +144,11 @@ const generateRandomSetCards = (cardsActive, cardsRight, cardsLeft) => {
     let newIndexesLeft = [];
     let newIndexesActive = [];
     let newIndexesRight = [];
-
     
     newIndexesLeft = newIndexes.slice(0, 3);
     newIndexesActive = newIndexes.slice(3, 6);
     newIndexesRight = newIndexes.slice(6, 8);
-    newIndexesRight.push(newIndexes[0]);
-    
+    newIndexesRight.push(newIndexes[0]);    
 
     for (i of newIndexesLeft) {
         let cardNew = createCardTemplate();
@@ -232,8 +231,5 @@ CAROUSEL.addEventListener('animationend', (animationEvent) => {
     BTN_LEFT_CAROUSEL.addEventListener('click', (moveLeft));
     BTN_RIGHT_CAROUSEL.addEventListener('click', (moveRight));
 });
-
-
-
 
 
