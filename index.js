@@ -1,7 +1,3 @@
-const btnBurger = document.querySelector('.header-burger');
-const headerNav = document.querySelector('.header-nav');
-const burgerWrapper = document.querySelector('.burger-wrapper');
-const headerNavList = document.querySelector('.header-nav__list');
 // Карусель
 const BTN_LEFT_CAROUSEL = document.querySelector('.arrow-left--slider');
 const BTN_RIGHT_CAROUSEL = document.querySelector('.arrow-right--slider');
@@ -10,8 +6,6 @@ const CAROUSEL = document.querySelector('.our-friends-cards__carousel');
 const CARDS_LEFT = document.querySelector('.cards--left');
 const CARDS_RIGHT = document.querySelector('.cards--right');
 const CARDS_ACTIVE = document.querySelector('.cards--active');
-
-
 
 const cardsArray = [
     {
@@ -63,40 +57,6 @@ const cardsArray = [
         btn: "Learn more"
     }
 ]
-
-
-// Интерактив для бургера
-const togglerOpen = (element) => {
-    element.classList.toggle('open');
-}
-
-const togglerRemove = (element) => {
-    element.classList.remove('open');
-}
-
-btnBurger.addEventListener('click', (event) => {
-    togglerOpen(btnBurger);
-    togglerOpen(headerNav);
-    togglerOpen(burgerWrapper);
-    document.body.classList.toggle('hidden');
-});
-
-
-headerNavList.addEventListener('click', (event) => {
-    if (event.target.classList.contains('header-nav__list') || (event.target.classList.contains('list-link'))) {
-        togglerRemove(btnBurger);
-        togglerRemove(headerNav);
-        togglerRemove(burgerWrapper);
-        document.body.classList.remove('hidden');
-    }
-})
-
-burgerWrapper.addEventListener('click', (event) => {
-    togglerRemove(btnBurger);
-    togglerRemove(headerNav);
-    togglerRemove(burgerWrapper);
-    document.body.classList.remove('hidden');
-})
 
 
 // Карусель
@@ -213,7 +173,7 @@ CAROUSEL.addEventListener('animationend', (animationEvent) => {
 
 
     while (newIndexes.length < 3) {
-        const indexRandom = String(Math.floor(Math.random() * 8));
+        const indexRandom = generateRandomNumber();
         if (!activeIndexes.includes(indexRandom) && (!newIndexes.includes(indexRandom))) {
             newIndexes.push(indexRandom);
         }
@@ -222,8 +182,8 @@ CAROUSEL.addEventListener('animationend', (animationEvent) => {
     for (i of newIndexes) {
         const cardNew = createCardTemplate();
         cardNew.setAttribute('id', i);
-        cardNew.innerHTML = `<img src="${cardsArray[+i].img}" alt="${cardsArray[+i].name}" class="card__img">
-        <div class="card__name">${cardsArray[+i].name}</div>
+        cardNew.innerHTML = `<img src="${cardsArray[i].img}" alt="${cardsArray[i].name}" class="card__img">
+        <div class="card__name">${cardsArray[i].name}</div>
         <button class="card__button button-outline button">${cardsArray[i].btn}</button>`;
         changedItem.appendChild(cardNew);
     }
