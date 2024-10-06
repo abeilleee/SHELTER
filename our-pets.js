@@ -1,72 +1,22 @@
-const OUR_FRIENDS_CARDS_PAGE = document.querySelector('.our-friends-cards--our-friends');
-const CARDS = document.querySelectorAll('.card');
-const ARROW_START = document.querySelector('.arrow--pagination-start');
-const ARROW_PREV = document.querySelector('.arrow--pagination-prev');
-const ARROW_NUMBER = document.querySelector('.arrow-number');
-const ARROW_NEXT = document.querySelector('.arrow--pagination-next');
-const ARROW_END = document.querySelector('.arrow--pagination-end');
+import { cardsArray } from "./constants.js";
+import { OUR_FRIENDS_CARDS_PAGE } from "./constants.js";
+import { ARROW_START } from "./constants.js";
+import { ARROW_PREV } from "./constants.js";
+import { PAGE_NUMBER } from "./constants.js";
+import { ARROW_NEXT } from "./constants.js";
+import { ARROW_END } from "./constants.js";
 
-
-const cardsArray = [
-    {
-        id: 0,
-        name: "Katrine",
-        img: "images/pets-katrine.jpg",
-        btn: "Learn more"
-    },
-    {
-        id: 1,
-        name: "Jennifer",
-        img: "images/pets-jennifer.jpg",
-        btn: "Learn more"
-    },
-    {
-        id: 2,
-        name: "Woody",
-        img: "images/pets-woody.jpg",
-        btn: "Learn more"
-    },
-    {
-        id: 3,
-        name: "Sophia",
-        img: "images/pets-sophia.jpg",
-        btn: "Learn more"
-    },
-    {
-        id: 4,
-        name: "Timmy",
-        img: "images/pets-timmy.jpg",
-        btn: "Learn more"
-    },
-    {
-        id: 5,
-        name: "Charly",
-        img: "images/pets-charly.jpg",
-        btn: "Learn more"
-    },
-    {
-        id: 6,
-        name: "Scarlett",
-        img: "images/pets-scarlet.jpg",
-        btn: "Learn more"
-    },
-    {
-        id: 7,
-        name: "Freddie",
-        img: "images/pets-freddie.jpg",
-        btn: "Learn more"
-    }
-]
 
 const createCardTemplate = () => {
     const card1 = document.createElement('div');
     card1.classList.add('card');
+    card1.classList.add('card--our-pets');
     return card1;
 }
 
-const generateRandomNumbers = () => {
+const generateRandomNumbers = (amountOfCards) => {
     const arr = [];
-    while (arr.length < 8) {
+    while (arr.length < amountOfCards) {
         let indexRandom = Math.floor(Math.random() * 8);
         if (!arr.includes(indexRandom)) {
             arr.push(indexRandom);
@@ -75,11 +25,11 @@ const generateRandomNumbers = () => {
     return arr;
 }
 
-const generateArrOfIndexes = () => {
+const generateArrOfIndexes = (amountOfPages, amountOfCards) => {
     let arr = [];
     let count = 0;
-    while (count < 6) {
-        let listOfIndexes = generateRandomNumbers();
+    while (count < amountOfPages) {
+        let listOfIndexes = generateRandomNumbers(amountOfCards);
         count++;
         arr.push(listOfIndexes);
     }
@@ -88,7 +38,7 @@ const generateArrOfIndexes = () => {
 
 const generateSetOfCards = (page, arr) => {
     page.innerHTML = '';
-    for (i of arr) {
+    for (let i of arr) {
         let cardNew = createCardTemplate();
         cardNew.setAttribute('id', i);
         cardNew.innerHTML = `<img src="${cardsArray[i].img}" alt="${cardsArray[i].name}" class="card__img">
@@ -98,44 +48,133 @@ const generateSetOfCards = (page, arr) => {
     }
 }
 
-let indexes = generateArrOfIndexes();
+const size = () => {
+    return window.innerWidth;
+}
+
+const generateArrOfIndexesToCurrentSize = (arrayOfIndexes, countOfCards) => {
+    let newArrayOfIndexes = arrayOfIndexes.join(',').split(',').map((i) => +i);
+    let arr = [];
+    for (let i = 0; i < Math.ceil(newArrayOfIndexes.length / countOfCards); i++) {
+        arr[i] = newArrayOfIndexes.slice((i * countOfCards), (i * countOfCards) + countOfCards);
+    }
+    return arr;
+}
+
+let amountOfCards = 8;
+let indexes = generateArrOfIndexes(6, 8);
+let amountOfPages = 6;  
+
+
+// const checkScreenSize = () => {
+//     if (size() >= 1280) {
+//         amountOfPages = 6;
+//         countOfCards = 8;
+//     } else if (size() < 1279 && size() > 1076) {
+//         amountOfPages = 8;
+//         countOfCards = 6;
+//     } else if (size() < 1076 && size() > 768) {
+//         amountOfPages = 8;
+//         countOfCards = 6;
+//     } else if (size() < 768 && size() > 0) {
+//         amountOfPages = 16;
+//         countOfCards = 3;
+//     }
+
+// }
+
+// const checkScreenSize = () => {
+//     if (size() === 1279) {
+//         amountOfPages = 6;
+//         countOfCards = 8;
+//         generateArrOfIndexesToCurrentSize(indexes, countOfCards, amountOfPages);
+//         console.log(indexes);
+//     } else if (size() === 1278) {
+//         amountOfPages = 8;
+//         countOfCards = 6;
+//         generateArrOfIndexesToCurrentSize(indexes, countOfCards);
+//         console.log(indexes);
+//     } else if (size() === 1075) {
+//         amountOfPages = 8;
+//         countOfCards = 6;
+//         generateArrOfIndexesToCurrentSize(indexes, countOfCards);
+//         console.log(indexes);
+//     } else if (size() === 767) {
+//         amountOfPages = 16;
+//         countOfCards = 3;
+//         generateArrOfIndexesToCurrentSize(indexes, countOfCards);
+//         console.log(indexes);
+//     }
+
+// }
+
+
+// addEventListener("resize", () => {
+//     checkScreenSize();
+// });
+
+
 
 window.onload = () => {
     if (cardsArray) {
         generateSetOfCards(OUR_FRIENDS_CARDS_PAGE, indexes[0]);
-        console.log(indexes)
+    }
+}
+
+
+const togglerAddDisabledClass = (page, button) => {
+    if (page === amountOfPages) {
+        button.classList.add('arrow--disabled');
+    } else if (page < amountOfPages) {
+        button.classList.remove('arrow--disabled');
+    }
+}
+
+const togglerRemoveDisabledClass = (page, button) => {
+    if (page > 1) {
+        button.classList.remove('arrow--disabled');
+    } else if (page === 1) {
+        button.classList.add('arrow--disabled');
     }
 }
 
 ARROW_NEXT.addEventListener('click', () => {
-    ARROW_NUMBER.innerHTML++;
-    let page = +ARROW_NUMBER.innerHTML;
+    PAGE_NUMBER.innerHTML++;
+    let page = +PAGE_NUMBER.innerHTML;
     generateSetOfCards(OUR_FRIENDS_CARDS_PAGE, indexes[page - 1]);
-    ARROW_PREV.classList.remove('arrow--disabled');
-    if (+ARROW_NUMBER.innerHTML === 6) {
-        ARROW_NEXT.classList.add('arrow--disabled');
-        ARROW_START.classList.remove('arrow--disabled');
-    }
+    togglerAddDisabledClass(+PAGE_NUMBER.innerHTML, ARROW_NEXT);
+    togglerRemoveDisabledClass(+PAGE_NUMBER.innerHTML, ARROW_PREV);
+    togglerRemoveDisabledClass(+PAGE_NUMBER.innerHTML, ARROW_START);
+    togglerAddDisabledClass(+PAGE_NUMBER.innerHTML, ARROW_END);
 })
 
 ARROW_PREV.addEventListener('click', () => {
-    ARROW_NUMBER.innerHTML--;
-    let page = +ARROW_NUMBER.innerHTML;
+    PAGE_NUMBER.innerHTML--;
+    let page = +PAGE_NUMBER.innerHTML;
     generateSetOfCards(OUR_FRIENDS_CARDS_PAGE, indexes[page - 1]);
+    togglerAddDisabledClass(+PAGE_NUMBER.innerHTML, ARROW_NEXT);
+    togglerRemoveDisabledClass(+PAGE_NUMBER.innerHTML, ARROW_PREV);
+    togglerRemoveDisabledClass(+PAGE_NUMBER.innerHTML, ARROW_START);
+    togglerAddDisabledClass(+PAGE_NUMBER.innerHTML, ARROW_END);
 })
 
 ARROW_START.addEventListener('click', () => {
-    if (+ARROW_NUMBER.innerHTML > 0) {
-        ARROW_START.classList.remove('arrow--disabled');
-        generateSetOfCards(OUR_FRIENDS_CARDS_PAGE, indexes[0]);
-        ARROW_NUMBER.innerHTML = '1';
-    }
+    PAGE_NUMBER.innerHTML = '1';
+    let page = +PAGE_NUMBER.innerHTML;
+    generateSetOfCards(OUR_FRIENDS_CARDS_PAGE, indexes[page - 1]);
+    togglerAddDisabledClass(+PAGE_NUMBER.innerHTML, ARROW_NEXT);
+    togglerRemoveDisabledClass(+PAGE_NUMBER.innerHTML, ARROW_PREV);
+    togglerRemoveDisabledClass(+PAGE_NUMBER.innerHTML, ARROW_START);
+    togglerAddDisabledClass(+PAGE_NUMBER.innerHTML, ARROW_END);
 })
 
 ARROW_END.addEventListener('click', () => {
-    if (+ARROW_NUMBER.innerHTML > 0 && +ARROW_NUMBER.innerHTML !== 6) {
-        ARROW_START.classList.remove('arrow--disabled');
-        generateSetOfCards(OUR_FRIENDS_CARDS_PAGE, indexes[5]);
-        ARROW_NUMBER.innerHTML = '6';
-    }
+    PAGE_NUMBER.innerHTML = `${amountOfPages}`;
+    let page = +PAGE_NUMBER.innerHTML;
+    generateSetOfCards(OUR_FRIENDS_CARDS_PAGE, indexes[page - 1]);
+    togglerAddDisabledClass(+PAGE_NUMBER.innerHTML, ARROW_NEXT);
+    togglerRemoveDisabledClass(+PAGE_NUMBER.innerHTML, ARROW_PREV);
+    togglerRemoveDisabledClass(+PAGE_NUMBER.innerHTML, ARROW_START);
+    togglerAddDisabledClass(+PAGE_NUMBER.innerHTML, ARROW_END);
 })
+

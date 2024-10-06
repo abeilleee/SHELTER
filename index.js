@@ -1,63 +1,11 @@
-// Карусель
-const BTN_LEFT_CAROUSEL = document.querySelector('.arrow-left--slider');
-const BTN_RIGHT_CAROUSEL = document.querySelector('.arrow-right--slider');
-const CARDS = document.querySelectorAll('.card');
-const CAROUSEL = document.querySelector('.our-friends-cards__carousel');
-const CARDS_LEFT = document.querySelector('.cards--left');
-const CARDS_RIGHT = document.querySelector('.cards--right');
-const CARDS_ACTIVE = document.querySelector('.cards--active');
-
-const cardsArray = [
-    {
-        id: 0,
-        name: "Katrine",
-        img: "images/pets-katrine.jpg",
-        btn: "Learn more"
-    },
-    {
-        id: 1,
-        name: "Jennifer",
-        img: "images/pets-jennifer.jpg",
-        btn: "Learn more"
-    },
-    {
-        id: 2,
-        name: "Woody",
-        img: "images/pets-woody.jpg",
-        btn: "Learn more"
-    },
-    {
-        id: 3,
-        name: "Sophia",
-        img: "images/pets-sophia.jpg",
-        btn: "Learn more"
-    },
-    {
-        id: 4,
-        name: "Timmy",
-        img: "images/pets-timmy.jpg",
-        btn: "Learn more"
-    },
-    {
-        id: 5,
-        name: "Charly",
-        img: "images/pets-charly.jpg",
-        btn: "Learn more"
-    },
-    {
-        id: 6,
-        name: "Scarlett",
-        img: "images/pets-scarlet.jpg",
-        btn: "Learn more"
-    },
-    {
-        id: 7,
-        name: "Freddie",
-        img: "images/pets-freddie.jpg",
-        btn: "Learn more"
-    }
-]
-
+import { cardsArray } from "./constants.js";
+import { BTN_LEFT_CAROUSEL } from "./constants.js";
+import { BTN_RIGHT_CAROUSEL } from "./constants.js";
+import { CARDS } from "./constants.js";
+import { CAROUSEL } from "./constants.js";
+import { CARDS_LEFT } from "./constants.js";
+import { CARDS_RIGHT } from "./constants.js";
+import { CARDS_ACTIVE } from "./constants.js";
 
 // Карусель
 
@@ -104,13 +52,13 @@ const generateRandomSetCards = (cardsActive, cardsRight, cardsLeft) => {
     let newIndexesLeft = [];
     let newIndexesActive = [];
     let newIndexesRight = [];
-    
+
     newIndexesLeft = newIndexes.slice(0, 3);
     newIndexesActive = newIndexes.slice(3, 6);
     newIndexesRight = newIndexes.slice(6, 8);
-    newIndexesRight.push(newIndexes[0]);    
+    newIndexesRight.push(newIndexes[0]);
 
-    for (i of newIndexesLeft) {
+    for (let i of newIndexesLeft) {
         let cardNew = createCardTemplate();
         cardNew.setAttribute('id', i);
         cardNew.innerHTML = `<img src="${cardsArray[i].img}" alt="${cardsArray[i].name}" class="card__img">
@@ -119,7 +67,7 @@ const generateRandomSetCards = (cardsActive, cardsRight, cardsLeft) => {
         cardsLeft.appendChild(cardNew);
     }
 
-    for (i of newIndexesActive) {
+    for (let i of newIndexesActive) {
         let cardNew = createCardTemplate();
         cardNew.setAttribute('id', i);
         cardNew.innerHTML = `<img src="${cardsArray[i].img}" alt="${cardsArray[i].name}" class="card__img">
@@ -128,7 +76,7 @@ const generateRandomSetCards = (cardsActive, cardsRight, cardsLeft) => {
         cardsActive.appendChild(cardNew);
     }
 
-    for (i of newIndexesRight) {
+    for (let i of newIndexesRight) {
         let cardNew = createCardTemplate();
         cardNew.setAttribute('id', i);
         cardNew.innerHTML = `<img src="${cardsArray[i].img}" alt="${cardsArray[i].name}" class="card__img">
@@ -179,7 +127,7 @@ CAROUSEL.addEventListener('animationend', (animationEvent) => {
         }
     }
 
-    for (i of newIndexes) {
+    for (let i of newIndexes) {
         const cardNew = createCardTemplate();
         cardNew.setAttribute('id', i);
         cardNew.innerHTML = `<img src="${cardsArray[i].img}" alt="${cardsArray[i].name}" class="card__img">

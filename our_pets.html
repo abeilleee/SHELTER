@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our pets</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="images/favicon.svg" type="image/x-icon">
-    <script src="burger.js" defer></script>
-    <script src="our-pets.js" defer></script>
+    <link rel="icon" href="images/favicon.svg" type="image/x-icon">   
+    <script type="module" src="burger.js" defer></script>
+    <script type="module" src="our-pets.js" defer></script>
+    <script type="module" src="pop-up.js" defer></script>
+    <script type="module" src="constants.js" defer></script>
 </head>
 
 <body>
@@ -56,42 +58,42 @@
                 </div>
                 <div class="our-friends-slider--big">
                     <div class="our-friends-cards--our-friends">
-                        <!-- <div class="card">
+                        <!-- <div class="card card--our-pets">
                             <img src="images/pets-katrine.jpg" alt="katrine" class="card__img">
                             <div class="card__name">Katrine</div>
                             <button class="card__button button-outline button">Learn more</button>
                         </div>
-                        <div class="card">
+                        <div class="card card--our-pets">
                             <img src="images/pets-jennifer.jpg" alt="jennifer" class="card__img">
                             <div class="card__name">Jennifer</div>
                             <button class="card__button button-outline button">Learn more</button>
                         </div>
-                        <div class="card">
+                        <div class="card card--our-pets">
                             <img src="images/pets-woody.jpg" alt="woody" class="card__img">
                             <div class="card__name">Woody</div>
                             <button class="card__button button-outline button">Learn more</button>
                         </div>
-                        <div class="card card--none320">
+                        <div class="card card--our-pets card--none320">
                             <img src="images/pets-sophia.jpg" alt="Sophia" class="card__img">
                             <div class="card__name">Sophia</div>
                             <button class="card__button button-outline button">Learn more</button>
                         </div>
-                        <div class="card card--none320">
+                        <div class="card card--our-pets card--none320">
                             <img src="images/pets-timmy.jpg" alt="Timmy" class="card__img">
                             <div class="card__name">Timmy</div>
                             <button class="card__button button-outline button">Learn more</button>
                         </div>
-                        <div class="card card--none320">
+                        <div class="card card--our-pets card--none320">
                             <img src="images/pets-charly.jpg" alt="Charly" class="card__img">
                             <div class="card__name">Charly</div>
                             <button class="card__button button-outline button">Learn more</button>
                         </div>
-                        <div class="card card--none768">
+                        <div class="card card--our-pets card--none768">
                             <img src="images/pets-scarlet.jpg" alt="Scarlett" class="card__img">
                             <div class="card__name">Scarlett</div>
                             <button class="card__button button-outline button">Learn more</button>
                         </div>
-                        <div class="card card--none768">
+                        <div class="card card--our-pets card--none768">
                             <img src="images/pets-freddie.jpg" alt="Freddie" class="card__img">
                             <div class="card__name">Freddie</div>
                             <button class="card__button button-outline button">Learn more</button>
@@ -140,7 +142,36 @@
         </div>
     </footer>
 
-    
+    <div class="pop-up-wrapper">
+        <div class="pop-up-box">
+            <div class="pop-up__btn-close">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M7.42618 6.00003L11.7046 1.72158C12.0985 1.32775 12.0985 0.689213 11.7046 0.295433C11.3108 -0.0984027 10.6723 -0.0984027 10.2785 0.295433L5.99998 4.57394L1.72148 0.295377C1.32765 -0.098459 0.68917 -0.098459 0.295334 0.295377C-0.0984448 0.689213 -0.0984448 1.32775 0.295334 1.72153L4.57383 5.99997L0.295334 10.2785C-0.0984448 10.6723 -0.0984448 11.3108 0.295334 11.7046C0.68917 12.0985 1.32765 12.0985 1.72148 11.7046L5.99998 7.42612L10.2785 11.7046C10.6723 12.0985 11.3108 12.0985 11.7046 11.7046C12.0985 11.3108 12.0985 10.6723 11.7046 10.2785L7.42618 6.00003Z"
+                        fill="#292929" />
+                </svg>
+            </div>
+            <!-- <div class="pop-up__card">
+                <div class="pop-up-img-box">
+                    <img class="pop-up-img" src="images/pets-jennifer.jpg" alt="jennifer">
+                </div>
+                <div class="pop-up-description">
+                    <h2 class="pop-up-name title"></h2>
+                    <h4 class="pop-up-breed title"></h4>
+                    <div class="pop-up-text">Jennifer is a sweet 2 months old Labrador that is patiently waiting to find
+                        a new forever home. This girl really enjoys being able to go outside to run and play, but won't
+                        hesitate to play up a storm in the house if she has all of her favorite toys.</div>
+                    <ul class="pop-up-list">
+                        <li class="pop-up__list-item"><span><b>Age: </b></span></li>
+                        <li class="pop-up__list-item"><span><b>Inoculations: </b></span></li>
+                        <li class="pop-up__list-item"><span><b>Diseases: </b></span></li>
+                        <li class="pop-up__list-item"><span><b>Parasites: </b></span></li>
+                    </ul>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
     
 </body>
 

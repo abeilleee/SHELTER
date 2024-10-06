@@ -1,9 +1,9 @@
-const btnBurger = document.querySelector('.header-burger');
-const headerNav = document.querySelector('.header-nav');
-const burgerWrapper = document.querySelector('.burger-wrapper');
-const headerNavList = document.querySelector('.header-nav__list');
+import { btnBurger } from "./constants.js";
+import { headerNav } from "./constants.js";
+import { burgerWrapper } from "./constants.js";
+import { headerNavList } from "./constants.js";
 
-// Интерактив для бургера
+// Бургер
 const togglerOpen = (element) => {
     element.classList.toggle('open');
 }

@@ -174,11 +174,13 @@ a:visited {
 
 .arrow-number {
     background-color: #F1CDB3;
+    text-align: center;
 }
 
 .arrow--disabled {
     border: 2px solid #CDCDCD;
     color: #CDCDCD;
+    pointer-events: none;
 }
 
 .arrows--hidden {
@@ -363,6 +365,7 @@ a:visited {
     display: flex;
     padding: 0 175px;
     gap: 120px;
+    align-items: center;
 }
 
 .about-box__text {
@@ -448,6 +451,10 @@ a:visited {
     display: flex;
     gap: 90px;
     justify-content: center;
+}
+
+.cards--active {
+    padding-right: 1px;
 }
 
 .card {
@@ -664,6 +671,124 @@ a:visited {
     height: 32px;
 }
 
+.pop-up-wrapper {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(41, 41, 41, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.pop-up-wrapper.open {
+    display: flex;
+}
+
+.pop-up-box {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.pop-up__btn-close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    border: 1px solid #F1CDB3;
+    width: 52px;
+    height: 52px;
+    background-color: transparent;
+    left: 890px;
+    top: -52px;
+    position: absolute;
+}
+
+.pop-up__btn-close:hover {
+    cursor: pointer;
+    background-color: #ffffffa9;
+    transition: 0.6s;
+}
+
+.pop-up__card {
+    display: flex;
+    width: 900px;
+    height: 500px;
+    background-color: #fafafa;
+    border-radius: 9px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 29px;
+    overflow: hidden;
+}
+
+.pop-up-img-box {
+    border-radius: 9px;
+}
+
+.pop-up-img {
+    width: 500px;
+    height: 505px;
+    border-radius: 9px;
+    object-fit: cover;
+}
+
+.pop-up-description {
+    display: flex;
+    flex-direction: column;
+}
+
+.pop-up-name {
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.pop-up-breed {
+    font-size: 20px;
+    color: #000000;
+    line-height: 23px;
+    letter-spacing: 0.06em;
+    margin-bottom: 40px;
+}
+
+.pop-up-text {
+    color: #000000;
+    font-family: Georgia, serif;
+    font-weight: 400;
+    line-height: 16.5px;
+    letter-spacing: 0.06em;
+    margin-bottom: 40px;
+}
+
+.pop-up-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style-type: disc;
+    padding-left: 13px;
+}
+
+.pop-up__list-item {
+    color: #F1CDB3;
+
+}
+
+.pop-up__list-item span {
+    color: #000000;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 16.5px;
+    letter-spacing: 0.06em;
+}
+
+
+
+
+
 @media (max-width:1280px) {
     .our-friends-slider {
         gap: 53px;
@@ -678,6 +803,8 @@ a:visited {
     .our-friends-cards--our-friends {
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 1fr 1fr;
+        max-height: 900px;
+        overflow: hidden;
     }
 
 }
@@ -718,6 +845,41 @@ a:visited {
     .our-friends-cards--our-friends {
         max-width: 100%;
         height: 100%;
+    }
+
+    .pop-up__btn-close {
+        left: 621px;
+        top: -52px;
+    }
+
+    .pop-up__card {
+        width: 630px;
+        height: 350px;
+        gap: 10px;
+    }
+
+    .pop-up-img {
+        width: 350px;
+        height: 355px;
+        border-radius: 9px;
+        object-fit: cover;
+    }
+
+    .pop-up-description {
+        padding-right: 9px;
+    }
+
+    .pop-up-breed {
+        margin-bottom: 20px;
+    }
+
+    .pop-up-text {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+    .pop-up-list {
+        gap: 4px;
     }
 }
 
@@ -887,6 +1049,10 @@ a:visited {
         order: 0;
     }
 
+    .card--our-pets {
+        margin: 0;
+    }
+
     .cards>:nth-child(2) {
         display: none;
     }
@@ -931,6 +1097,10 @@ a:visited {
     .footer-puppy {
         margin: 0 auto;
     }
+
+    .pop-up-breed {
+        font-size: 20px;
+    }
 }
 
 @media (max-width: 769px) {
@@ -957,6 +1127,48 @@ a:visited {
 
     .card--none768 {
         display: none;
+    }
+
+    .pop-up__btn-close {
+        left: 218px;
+        top: -52px;
+    }
+
+    .pop-up__card {
+        width: 250px;
+        height: 351px;
+        gap: 0px;
+        overflow: auto;
+    }
+
+    .pop-up-img {
+        display: none;
+    }
+
+    .pop-up-description {
+        padding: 9px;
+    }
+
+    .pop-up-name {
+        text-align: center;
+    }
+
+    .pop-up-breed {
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .pop-up-text {
+        font-size: 13px;
+        margin-bottom: 24px;
+    }
+
+    .pop-up-list {
+        gap: 6px;
+    }
+
+    .pop-up-list-item {
+        gap: 4px;
     }
 }
 
@@ -1190,6 +1402,18 @@ a:visited {
     .footer-puppy {
         max-width: 260px;
         max-height: 269px;
+    }
+
+    .pop-up-name {
+        text-align: center;
+        font-size: 35px;
+        margin-bottom: 10px;
+    }
+
+    .pop-up-breed {
+        text-align: center;
+        font-size: 20px;
+        margin-bottom: 10px;
     }
 
 }
